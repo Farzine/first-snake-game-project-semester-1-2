@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1667470296 source:i:\my drive\code\codeblocks\snake_game\main.cpp
+	<bits/stdc++.h>
+	<graphics.h>
+	<time.h>
+	<stdio.h>
+	<windows.h>
+	<cstdlib>
+
