@@ -200,6 +200,8 @@ int main()
     return 0;
 }
 
+// another code for snake game
+
 /*
 
 #include <conio.h>
