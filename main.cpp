@@ -33,7 +33,7 @@ int main()
 
     while(game)
     {
-        setfillstyle(SOLID_FILL,WHITE); // initialization back ground color
+        setfillstyle(SOLID_FILL,BLACK); // initialization back ground color
         bar(0,0,630,470);  //  initializing background size or wide (lower width 630 and right length 470)
 
         setfillstyle(SOLID_FILL,YELLOW);  // initializing boarder color
@@ -45,9 +45,9 @@ int main()
         bar(0,470,630,460); // lower boarder width,length
 
         bar(620,10,630,470); // lower boarder width,length
-        
 
-        setfillstyle(SOLID_FILL,	MAGENTA); // initialization food color
+
+        setfillstyle(SOLID_FILL,	WHITE); // initialization food color
 
         if(snakeX[0] == foodX && snakeY[0] == foodY) // checking snake and food is in the same position or not
         {
@@ -58,7 +58,7 @@ int main()
             bar(foodX,foodY,foodX + 10 , foodY + 10 ); // food poosition
 
             do{
-                foodX = (10 + rand() % 600);
+                foodX = (10 + rand() % 610);
                 foodY = (10 + rand() % 450);
             }while(getpixel(foodX,foodY) != 0 && foodX > 10 && foodY>10); //condition for food visualization
 
@@ -73,7 +73,7 @@ int main()
 
             if(foodX == 10){
                 foodX = rand() % 10 + 5;
-                foodX = food * 10;
+                foodX = foodX * 10;
             }
             else if(foodY == 10)
             {
@@ -85,7 +85,7 @@ int main()
 
         bar(foodX,foodY,foodX + 10, foodY + 10); // final  food position for display
 
-        setfillstyle(SOLID_FILL,	CYAN); // initialize snake color
+        //setfillstyle(SOLID_FILL,	GREEN);
 
         // condition for key direction
 
@@ -150,7 +150,15 @@ int main()
 
        for(int i =0; i < length; i++)
        {
+           setcolor(RED);
            bar(snakeX[i], snakeY[i], snakeX[i] + 10, snakeY[i] + 10);
+           if(i&1)
+            setfillstyle(SOLID_FILL,	YELLOW); // initialize snake color
+          else{
+            setfillstyle(SOLID_FILL,	RED);
+            bar(snakeX[i], snakeY[i], snakeX[i] + 5, snakeY[i] + 5);
+          }
+
        }
 
        // body of snake
