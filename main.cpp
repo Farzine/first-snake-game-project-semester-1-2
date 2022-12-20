@@ -10,7 +10,7 @@ int main()
 
     //initialization
 
-    int  delayTime = 200;
+    int  delayTime = 200; // using delayTime for controlling snake speed
     int food = 0;        // snake food
     int body= 500;   // snake body
     int p_dir = 1;     //p_dir = previous direction;
@@ -24,9 +24,9 @@ int main()
 
     // initialization for display snake ;
 
-    snakeX[0] = 200,snakeY[0] = 200; // starting position of the snake
-    foodX = 200, foodY = 200; // starting position of food
-    key_dir = rand()%2;
+    snakeX[0] = 200,snakeY[0] = 200; // starting position of the snake initialize with 200
+    foodX = 200, foodY = 200; // starting position of food initialize with 200
+    key_dir = rand()%2;  // getting first key direction randomly
 
 
     // drawing game panel
@@ -51,11 +51,11 @@ int main()
 
         if(snakeX[0] == foodX && snakeY[0] == foodY) // checking snake and food is in the same position or not
         {
-            length = length + 1;
+            length = length + 1; // increasing snake length when it eats food
             food = food +1 ;
             delayTime = delayTime - 2;  // food consumed by snake then the delay time reduced and snake spread increase
 
-            bar(foodX,foodY,foodX + 10 , foodY + 10 ); // food poosition
+            bar(foodX,foodY,foodX + 10 , foodY + 10 ); // food position
 
             do{
                 foodX = (10 + rand() % 610);
@@ -85,7 +85,6 @@ int main()
 
         bar(foodX,foodY,foodX + 10, foodY + 10); // final  food position for display
 
-        //setfillstyle(SOLID_FILL,	GREEN);
 
         // condition for key direction
 
@@ -150,10 +149,10 @@ int main()
 
        for(int i =0; i < length; i++)
        {
-           setcolor(RED);
+           setcolor(RED); // initialize snake color
            bar(snakeX[i], snakeY[i], snakeX[i] + 10, snakeY[i] + 10);
            if(i&1)
-            setfillstyle(SOLID_FILL,	YELLOW); // initialize snake color
+            setfillstyle(SOLID_FILL,	YELLOW);  // creating love shape in snake body
           else{
             setfillstyle(SOLID_FILL,	RED);
             bar(snakeX[i], snakeY[i], snakeX[i] + 5, snakeY[i] + 5);
@@ -205,4 +204,3 @@ int main()
     getch();
     return 0;
 }
-
