@@ -47,6 +47,104 @@ int main()
 
         bar(620,10,630,470); // lower boarder width,length
 
+         // creating obstacle
+
+        //Obstacle 1
+
+        int obstakleX=180, obstakleY=300;
+        setfillstyle(SOLID_FILL,	WHITE);
+        bar(obstakleX, obstakleY, obstakleX + 200, obstakleY + 15);
+
+
+        //checking bumping in the obstacle 1
+
+        for(int i=0; i<200; i++)
+        {
+            for(int j=0; j<15; j++)
+            {
+
+                if(snakeX[0] ==obstakleX+i && snakeY[0] ==obstakleY+j)
+                {
+                    std::cout<<"Snake bumped into the Obstacle !!\n\n";
+                    game = false;
+                    break;
+                }
+            }
+        }
+
+        //Obstacle 2
+
+        obstakleX=75, obstakleY=120;
+        setfillstyle(SOLID_FILL,	BLUE);
+        bar(obstakleX, obstakleY, obstakleX + 15, obstakleY + 200);
+
+
+        //checking bumping in the obstacle 2
+
+        for(int i=0; i<15; i++)
+        {
+            for(int j=0; j<200; j++)
+            {
+
+                if(snakeX[0] ==obstakleX+i && snakeY[0] ==obstakleY+j)
+                {
+                    std::cout<<"Snake bumped into the Obstacle !!\n\n";
+                    game = false;
+                    break;
+                }
+            }
+        }
+
+        //obstacle 3
+
+        obstakleX=400, obstakleY=150;
+        setfillstyle(SOLID_FILL,	GREEN);
+        bar(obstakleX, obstakleY, obstakleX + 15, obstakleY + 200);
+
+
+        //checking bumping in the obstacle 3
+
+        for(int i=0; i<15; i++)
+        {
+            for(int j=0; j<200; j++)
+            {
+
+                if(snakeX[0] ==obstakleX+i && snakeY[0] ==obstakleY+j)
+                {
+                    std::cout<<"Snake bumped into the Obstacle !!\n\n";
+                    game = false;
+                    break;
+                }
+            }
+        }
+        //Obstacle 04
+
+        if(food>20)
+        {
+            obstakleX=150, obstakleY=110;
+            setfillstyle(SOLID_FILL,	YELLOW);
+            bar(obstakleX, obstakleY, obstakleX + 200, obstakleY + 15);
+
+
+            //checking bumping in the obstacle 4
+
+            for(int i=0; i<200; i++)
+            {
+                for(int j=0; j<15; j++)
+                {
+
+                    if(snakeX[0] ==obstakleX+i && snakeY[0] ==obstakleY+j)
+                    {
+                        std::cout<<"Snake bumped into the Obstacle !!\n\n";
+                        game = false;
+                        break;
+                    }
+                }
+            }
+
+        }
+
+
 
         setfillstyle(SOLID_FILL,	WHITE); // initialization food color
 
@@ -82,6 +180,17 @@ int main()
             {
                 foodY = rand() % 10 + 5;
                 foodY = foodY * 10;
+            }
+            
+            // checking if the food in obstacle then reposition it
+            
+            if(foodX == obstakleX)
+            {
+                foodX = obstakleX  + 15;
+            }
+            else if(foodY == obstakleY)
+            {
+                foodY = obstakleY  + 15;
             }
 
         }
@@ -183,6 +292,7 @@ int main()
             snakeX[i] = snakeX[i - 1];
             snakeY[i] = snakeY[i - 1];
         }
+
 
         // checking bumping into body
 
