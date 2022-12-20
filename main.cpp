@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #include<graphics.h>
 #include<time.h>
+#include<conio.h>
 
 
 int main()
@@ -19,8 +20,8 @@ int main()
 
     // snake array
 
-        snakeX[200] = {0};
-        snakeY[200] = {0};
+    snakeX[200] = {0};
+    snakeY[200] = {0};
 
     // initialization for display snake ;
 
@@ -55,12 +56,13 @@ int main()
             food = food +1 ;
             delayTime = delayTime - 2;  // food consumed by snake then the delay time reduced and snake spread increase
 
-            bar(foodX,foodY,foodX + 10 , foodY + 10 ); // food position
 
-            do{
+            do
+            {
                 foodX = (10 + rand() % 610);
                 foodY = (10 + rand() % 450);
-            }while(getpixel(foodX,foodY) != 0 && foodX > 10 && foodY>10); //condition for food visualization
+            }
+            while(getpixel(foodX,foodY) != 0 && foodX > 10 && foodY>10);  //condition for food visualization
 
             // condition for not overlaping food or snake
 
@@ -71,7 +73,8 @@ int main()
 
             // condition for food coordinate can't be 10, if so then the food will situated beside the boarder line every time
 
-            if(foodX == 10){
+            if(foodX == 10)
+            {
                 foodX = rand() % 10 + 5;
                 foodX = foodX * 10;
             }
@@ -82,26 +85,33 @@ int main()
             }
 
         }
-
-        bar(foodX,foodY,foodX + 10, foodY + 10); // final  food position for display
+        setcolor(2);
+        circle(foodX+5, foodY+5, 6); // circle the food
+        floodfill(foodX+5, foodY+5, 2);
+        //bar(foodX,foodY,foodX + 10, foodY + 10); // final  food position for display
 
 
         // condition for key direction
 
-        if(GetAsyncKeyState(VK_RIGHT)||GetAsyncKeyState('D')){
+        if(GetAsyncKeyState(VK_RIGHT)||GetAsyncKeyState('D'))
+        {
             key_dir = 1;
         }
-        else if(GetAsyncKeyState(VK_LEFT)||GetAsyncKeyState('A')){
+        else if(GetAsyncKeyState(VK_LEFT)||GetAsyncKeyState('A'))
+        {
             key_dir = 2;
         }
-        else if(GetAsyncKeyState(VK_UP)||GetAsyncKeyState('W')){
+        else if(GetAsyncKeyState(VK_UP)||GetAsyncKeyState('W'))
+        {
             key_dir = 3;
         }
-        else if(GetAsyncKeyState(VK_DOWN)||GetAsyncKeyState('S')){
+        else if(GetAsyncKeyState(VK_DOWN)||GetAsyncKeyState('S'))
+        {
             key_dir = 4;
         }
-        else {
-                key_dir = 0;
+        else
+        {
+            key_dir = 0;
         }
 
         // condition for moving snake according to key direction
@@ -109,19 +119,24 @@ int main()
         switch(key_dir)
         {
         case 0:
-            if(p_dir == 1){
+            if(p_dir == 1)
+            {
                 snakeX[0] = snakeX[0] + 10;
             }
-            else if(p_dir == 2){
+            else if(p_dir == 2)
+            {
                 snakeX[0] = snakeX[0] - 10;
             }
-            else if(p_dir == 3){
+            else if(p_dir == 3)
+            {
                 snakeY[0] = snakeY[0] - 10;
             }
-            else if(p_dir == 4){
+            else if(p_dir == 4)
+            {
                 snakeY[0] = snakeY[0] + 10;
             }
-            else{
+            else
+            {
                 key_dir = 0;
             }
             break;
@@ -145,55 +160,58 @@ int main()
 
         }
 
-       // displaying snake
+        // displaying snake
 
-       for(int i =0; i < length; i++)
-       {
-           setcolor(RED); // initialize snake color
-           bar(snakeX[i], snakeY[i], snakeX[i] + 10, snakeY[i] + 10);
-           if(i&1)
-            setfillstyle(SOLID_FILL,	YELLOW);  // creating love shape in snake body
-          else{
-            setfillstyle(SOLID_FILL,	RED);
-            bar(snakeX[i], snakeY[i], snakeX[i] + 5, snakeY[i] + 5);
-          }
-
-       }
-
-       // body of snake
-
-       for(int i = 199; i > 0; i--)
-       {
-           snakeX[i] = snakeX[i - 1];
-           snakeY[i] = snakeY[i - 1];
-       }
-
-    // checking bumping into body
-
-    for(int i = 2; i < length; i++)
-    {
-        if(snakeX[0] == snakeX[i] && snakeY[0] == snakeY[i])
+        for(int i =0; i < length; i++)
         {
-            body = i;
-            break;
+            setcolor(RED); // initialize snake color
+            bar(snakeX[i], snakeY[i], snakeX[i] + 10, snakeY[i] + 10);
+            if(i&1)
+                setfillstyle(SOLID_FILL,	YELLOW);  // creating love shape in snake body
+            else
+            {
+                setfillstyle(SOLID_FILL,	RED);
+                bar(snakeX[i], snakeY[i], snakeX[i] + 5, snakeY[i] + 5);
+            }
+
         }
-    }
 
-    delay(delayTime);
+        // body of snake
 
-    // checking bumping in to boundary;
+        for(int i = 199; i > 0; i--)
+        {
+            snakeX[i] = snakeX[i - 1];
+            snakeY[i] = snakeY[i - 1];
+        }
 
-    if(snakeX[0] >= 615 || snakeX[0] <=5 || snakeY[0] <= 5|| snakeY[0] >= 455){
-        std::cout<<"Snake bumped into the wall !!\n\n";
-        game = false;
-    }
+        // checking bumping into body
 
-    // checking bumping into body
+        for(int i = 2; i < length; i++)
+        {
+            if(snakeX[0] == snakeX[i] && snakeY[0] == snakeY[i])
+            {
+                body = i;
+                break;
+            }
+        }
 
-    if(snakeX[0] == snakeX[body] && snakeY[0] ==  snakeY[body] ){
-        std::cout<<"Snake bumped into itself !!!\n\n";
-        game = false;
-    }
+        delay(delayTime);
+
+        // checking bumping in to boundary;
+
+        if(snakeX[0] >= 615 || snakeX[0] <=5 || snakeY[0] <= 5|| snakeY[0] >= 455)
+        {
+            std::cout<<"Snake bumped into the wall !!\n\n";
+            game = false;
+        }
+
+        // checking bumping into body
+
+        if(snakeX[0] == snakeX[body] && snakeY[0] ==  snakeY[body] )
+        {
+            std::cout<<"Snake bumped into itself !!!\n\n";
+            game = false;
+        }
 
     }
 
