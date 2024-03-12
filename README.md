@@ -1,6 +1,22 @@
 # snake-game
-this is a simple snake game. useed some solid color. its prefer for sample project work.
-#used_graphics.h_library
+ - SWE 1-2 Project
+ - 2D Console Game
+
+# Tech Stack
+ - C
+ - Graphics.h library
+ - Any C/C++ compiler and code editor
+ 
+ # How to install ?
+ - Download the main.cpp file
+ - Setup graphics.h library in your code editor
+ - Open the main.cpp file on the code editor
+ - Run the file "main.cpp"
+ - Enjoy the Game
+  
+# Here are some screenshot and video of the Game
+ - Hope you like it
+
 ![2023-01-31 (1)](https://user-images.githubusercontent.com/107579600/215752744-3d5b57cd-d67f-40c8-ac19-39e37acf54ca.png)
 ![2023-01-31 (2)](https://user-images.githubusercontent.com/107579600/215752757-56f5a648-465a-4530-99b7-492e77d6d590.png)
 ![2023-01-31 (3)](https://user-images.githubusercontent.com/107579600/215752761-b560b6df-3588-437a-ac01-64d6c076202d.png)
