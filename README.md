@@ -8,7 +8,8 @@
  - Any C/C++ compiler and code editor
  
  # How to install ?
- - Download the main.cpp file
+ - Download the main.cpp and main.exe file
+ - Run the main.exe file on your code editor to instant play or,
  - Setup graphics.h library in your code editor
  - Open the main.cpp file on the code editor
  - Run the file "main.cpp"
